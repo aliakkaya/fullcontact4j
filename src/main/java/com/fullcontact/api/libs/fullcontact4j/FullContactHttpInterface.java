@@ -5,6 +5,7 @@ import com.fullcontact.api.libs.fullcontact4j.http.*;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fullcontact.api.libs.fullcontact4j.http.retrofit.Slf4jLogger;
 import retrofit.RestAdapter;
 import retrofit.client.Client;
 import retrofit.converter.Converter;
@@ -49,7 +50,8 @@ public class FullContactHttpInterface {
 
         jsonConverter = new JacksonConverter(mapper);
         RestAdapter adapter = new RestAdapter.Builder().setEndpoint(baseUrl).setExecutors(httpExecutor, null)
-                .setClient(httpClient).setConverter(jsonConverter).build();
+                .setClient(httpClient).setConverter(jsonConverter).setLog(new Slf4jLogger()).build();
+        adapter.setLogLevel(RestAdapter.LogLevel.FULL);
         fullContactApi = adapter.create(FullContactApi.class);
         this.baseUrl = baseUrl;
     }

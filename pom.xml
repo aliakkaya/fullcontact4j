@@ -8,6 +8,9 @@
     <artifactId>fullcontact4j</artifactId>
     <name>FullContact Java Bindings</name>
     <version>5.5.0</version>
+    <properties>
+    	<org.slf4j-version>1.7.25</org.slf4j-version>
+    </properties>
     <dependencies>
 
         <dependency>
@@ -51,6 +54,11 @@
             <artifactId>lombok</artifactId>
             <version>1.16.12</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${org.slf4j-version}</version>
         </dependency>
     </dependencies>
 
